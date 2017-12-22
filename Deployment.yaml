@@ -1,0 +1,21 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: dashboard-deployment
+  namespace: honda
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: dashboard
+    spec:
+      containers:
+      - name: arbdashboard
+        image: registry.k8s/arbdashboard:IMG_ID
+        resources:
+          limits:
+            cpu: 300m
+            memory: 750Mi
+        ports:
+        - containerPort: 80
